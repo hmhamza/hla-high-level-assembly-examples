@@ -32,13 +32,3 @@ begin sumInputs;
 	stdout.put( "Total Sum: " ,sum,nl,nl);
 	
 end sumInputs;
-
-
- 
-
- 
-		
- 
-
- 
-	
