@@ -1,0 +1,44 @@
+program sumInputs;
+
+#include("stdlib.hhf")
+
+var
+ 
+    input:    uns8;
+	sum:	  uns8;
+   
+	
+begin sumInputs;
+ 
+	mov( 0, sum );
+	mov( 1, input );
+	
+	stdout.put(nl);
+	
+	while( input >0 ) do 
+	
+	mov(0,ax);
+	stdout.put( "Enter Integer (0-255) [0 for TERMINATE]: " );
+	stdin.getu8();
+	mov( al, input );
+	
+	mov(sum,bl);
+	add(bl,al);
+	mov(al,sum);
+	
+	stdout.put(nl);
+	endwhile;
+	
+	stdout.put( "Total Sum: " ,sum,nl,nl);
+	
+end sumInputs;
+
+
+ 
+
+ 
+		
+ 
+
+ 
+	
