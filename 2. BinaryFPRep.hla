@@ -33,8 +33,7 @@ begin BinaryFPRep;
 	mov(0,count);
 	mov(0,count4);
 	
-	while( count <64 ) do 
-	
+	while( count <64 ) do 	
 		if(count4==4) then
 			stdout.put("_");
 			mov(0,count4);
@@ -51,8 +50,7 @@ begin BinaryFPRep;
 		endif;
 		
 		add(1,count);
-		add(1,count4);
-	
+		add(1,count4);	
 	endwhile;
 	
 	
@@ -72,8 +70,7 @@ begin BinaryFPRep;
 	
 	stdout.put(nl,nl,"Exponent bits:  ");
 	mov(0,count);
-	while( count <11 ) do 
-	
+	while( count <11 ) do 	
 		shl(1, hexval); 
 		lahf();
 		and( %0000_0001, ah );
@@ -84,14 +81,12 @@ begin BinaryFPRep;
 			stdout.put("1");
 		endif;
 		
-		add(1,count);
-		
+		add(1,count);		
 	endwhile;
 	
 	stdout.put(nl,nl,"Mantissa bits:  ");
 	mov(0,count);
-	while( count <64-11-1 ) do 
-	
+	while( count <64-11-1 ) do 	
 		shl(1, hexval); 
 		lahf();
 		and( %0000_0001, ah );
@@ -102,8 +97,7 @@ begin BinaryFPRep;
 			stdout.put("1");
 		endif;
 		
-		add(1,count);
-		
+		add(1,count);		
 	endwhile;
 	
 	stdout.put(nl,nl);
