@@ -1,0 +1,48 @@
+program binToDecHex;
+
+var 
+	noOfDigits:			int8;
+	decimal:			uns32;
+	
+	
+#include("stdlib.hhf")
+		
+begin binToDecHex;
+ 
+	stdout.put(nl,"Enter no. of digits you want to enter [max. 32]: ");
+	stdin.get(noOfDigits);
+	
+	mov(0,edx);
+	while( noOfDigits >0 ) do 
+		
+		stdin.getc();
+		
+		stdout.put(nl,"Enter binary digit: ");
+		stdin.getc();
+	
+		if(al=$30) then
+			shl(1, edx);
+			sub(1,noOfDigits);
+		endif;
+		
+		if(al!=$30 && al=$31) then
+			shl(1, edx);
+			or( %0000_0000_0000_0000_0000_0000_0000_0001, edx );
+			
+			sub(1,noOfDigits);
+		endif;
+		
+		if(al!=$30 && al!=$31) then 
+			stdout.put(nl,"You entered invalid character. You can only enter 0's and 1's",nl);
+		endif;
+		
+		
+		
+	endwhile;
+ 
+	stdout.put(nl,"Value in Hexadecimal: $",edx,nl);
+	push( edx );
+	pop( decimal);
+	stdout.put(nl,"Value in Decimal: ",decimal,nl);
+	
+end binToDecHex;

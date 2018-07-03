@@ -19,3 +19,9 @@ a) Decimal scientific notation (use pute64()),
 b) As a 64 bit unsigned hex number,
 
 c) As 64 binary digits. Separate each nibble with a ‘_’ character, separate the sign, exponent and mantissa bits from each other with spaces.
+
+### 3. binToDecHex
+
+Write a program that uses ´´´stdin.getc´´´ to read a sequence of binary digits from the user (that is, a sequence of 
+‘1’ and ‘0’ characters). Convert this string to an integer using the AND, SHL, and OR instructions. Display 
+the integer result in hexadecimal and decimal. You may assume the user will not enter more than 32 digits.
