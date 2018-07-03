@@ -13,15 +13,12 @@ Write a program named sumInputs (in a file named sumInputs.hla) that reads a lis
 Create a program named BinaryFPRep.hla that does the following:
 
 Reads a floating point value from the user and displays this value in the following formats:
-
-a) Decimal scientific notation (use pute64()),
-
-b) As a 64 bit unsigned hex number,
-
-c) As 64 binary digits. Separate each nibble with a ‘_’ character, separate the sign, exponent and mantissa bits from each other with spaces.
+1. Decimal scientific notation (use pute64())
+2. As a 64 bit unsigned hex number
+3. As 64 binary digits. Separate each nibble with a ‘_’ character, separate the sign, exponent and mantissa bits from each other with spaces
 
 ### 3. binToDecHex
 
-Write a program that uses ´´´stdin.getc´´´ to read a sequence of binary digits from the user (that is, a sequence of 
+Write a program that uses ```stdin.getc``` to read a sequence of binary digits from the user (that is, a sequence of 
 ‘1’ and ‘0’ characters). Convert this string to an integer using the AND, SHL, and OR instructions. Display 
 the integer result in hexadecimal and decimal. You may assume the user will not enter more than 32 digits.
