@@ -1,0 +1,112 @@
+program BinaryFPRep;
+
+#include("stdlib.hhf")
+
+var
+ 
+    input:     real64;
+	width:	   uns32;
+	count:	   int8; 
+	count4:	   int8; 
+	hexval:   int32; 
+		
+		
+begin BinaryFPRep;
+ 
+	mov( 10, width );
+	
+	stdout.put(nl, "Enter any floating point Value:  " );
+	stdin.get(input);
+		
+	stdout.put(nl,nl,"Decimal scientific notation: ");
+	stdout.pute64(input,width);
+	
+	
+	stdout.put(nl,nl,"hex representation:  ");
+	fld( input );
+	fst( hexval);
+	mov(hexval,eax);	
+	stdout.put(eax);
+	
+	
+	stdout.put(nl,nl,"64 binary digits: ");
+	mov(0,count);
+	mov(0,count4);
+	
+	while( count <64 ) do 
+	
+		if(count4==4) then
+			stdout.put("_");
+			mov(0,count4);
+		endif;
+		
+		shl(1, hexval); 
+		lahf();
+		and( %0000_0001, ah );
+		
+		if(ah=00) then
+			stdout.put("0");
+		else
+			stdout.put("1");
+		endif;
+		
+		add(1,count);
+		add(1,count4);
+	
+	endwhile;
+	
+	
+	
+	fld( input );
+	fst( hexval);
+	stdout.put(nl,nl,"Sign bit:  ");
+	shl(1, hexval); 
+	lahf();
+	and( %0000_0001, ah );
+	
+	if(ah=00) then
+		stdout.put("0");
+	else
+		stdout.put("1");
+	endif;
+	
+	stdout.put(nl,nl,"Exponent bits:  ");
+	mov(0,count);
+	while( count <11 ) do 
+	
+		shl(1, hexval); 
+		lahf();
+		and( %0000_0001, ah );
+		
+		if(ah=00) then
+			stdout.put("0");
+		else
+			stdout.put("1");
+		endif;
+		
+		add(1,count);
+		
+	endwhile;
+	
+	stdout.put(nl,nl,"Mantissa bits:  ");
+	mov(0,count);
+	while( count <64-11-1 ) do 
+	
+		shl(1, hexval); 
+		lahf();
+		and( %0000_0001, ah );
+		
+		if(ah=00) then
+			stdout.put("0");
+		else
+			stdout.put("1");
+		endif;
+		
+		add(1,count);
+		
+	endwhile;
+	
+	stdout.put(nl,nl);
+	
+	
+end BinaryFPRep;
